@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "proxy": "https://api-evangelist.github.io/api-proxies/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcat": "https://www.w3.org/ns/dcat#",
+
+    "ProxyRoute": "proxy:ProxyRoute",
+    "UpstreamCluster": "proxy:UpstreamCluster",
+    "ProxyFilter": "proxy:ProxyFilter",
+    "TLSConfig": "proxy:TLSConfig",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "host": {
+      "@id": "proxy:host",
+      "@type": "xsd:string"
+    },
+    "path_prefix": {
+      "@id": "proxy:path_prefix",
+      "@type": "xsd:string"
+    },
+    "rewrite_prefix": {
+      "@id": "proxy:rewrite_prefix",
+      "@type": "xsd:string"
+    },
+    "methods": {
+      "@id": "proxy:methods",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "upstream_cluster": {
+      "@id": "proxy:upstream_cluster",
+      "@type": "@id"
+    },
+    "filters": {
+      "@id": "proxy:filters",
+      "@container": "@list",
+      "@type": "xsd:string"
+    },
+    "timeout_ms": {
+      "@id": "proxy:timeout_ms",
+      "@type": "xsd:integer"
+    },
+    "retry_policy": {
+      "@id": "proxy:retry_policy"
+    },
+    "proxy_type": {
+      "@id": "proxy:proxy_type",
+      "@type": "xsd:string"
+    },
+    "discovery_type": {
+      "@id": "proxy:discovery_type",
+      "@type": "xsd:string"
+    },
+    "load_balancing_policy": {
+      "@id": "proxy:load_balancing_policy",
+      "@type": "xsd:string"
+    },
+    "endpoints": {
+      "@id": "proxy:endpoints",
+      "@container": "@set"
+    },
+    "protocol": {
+      "@id": "proxy:protocol",
+      "@type": "xsd:string"
+    },
+    "tls": {
+      "@id": "proxy:tls"
+    },
+    "health_check": {
+      "@id": "proxy:health_check"
+    },
+    "circuit_breaker": {
+      "@id": "proxy:circuit_breaker"
+    },
+    "host_endpoint": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "port": {
+      "@id": "proxy:port",
+      "@type": "xsd:integer"
+    },
+    "weight": {
+      "@id": "proxy:weight",
+      "@type": "xsd:integer"
+    },
+    "tags": {
+      "@id": "dcat:keyword",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "proxy:status",
+      "@type": "xsd:string"
+    }
+  }
+}

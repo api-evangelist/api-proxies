@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/api-proxies/refs/heads/main/json-structure/api-proxies-upstream-cluster-structure.json",
+  "name": "UpstreamCluster",
+  "description": "A logical pool of upstream endpoints that an API proxy load-balances traffic to, with health checking and connection settings.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name of the upstream cluster.",
+      "example": "payments-service"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the upstream service this cluster fronts.",
+      "example": "Internal payments microservice running in the payments Kubernetes namespace."
+    },
+    "discovery_type": {
+      "type": "string",
+      "description": "How the proxy discovers endpoints in this cluster.",
+      "enum": [
+        "static",
+        "strict_dns",
+        "logical_dns",
+        "eds",
+        "kubernetes",
+        "consul"
+      ],
+      "example": "kubernetes"
+    },
+    "load_balancing_policy": {
+      "type": "string",
+      "description": "Algorithm used to balance traffic across endpoints.",
+      "enum": [
+        "round_robin",
+        "least_request",
+        "ring_hash",
+        "random",
+        "maglev"
+      ],
+      "example": "least_request"
+    },
+    "endpoints": {
+      "type": "array",
+      "description": "List of upstream endpoints in this cluster.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string",
+            "example": "10.0.4.12"
+          },
+          "port": {
+            "type": "int32",
+            "example": 8080
+          },
+          "weight": {
+            "type": "int32",
+            "example": 100
+          }
+        },
+        "required": [
+          "host",
+          "port"
+        ]
+      }
+    },
+    "protocol": {
+      "type": "string",
+      "description": "Application protocol used to talk to the upstream.",
+      "enum": [
+        "http1",
+        "http2",
+        "http3",
+        "grpc",
+        "tcp"
+      ],
+      "example": "http2"
+    },
+    "tls": {
+      "type": "object",
+      "description": "Upstream TLS settings used by the proxy when connecting to backends.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "example": true
+        },
+        "sni": {
+          "type": "string",
+          "example": "payments.internal.example.com"
+        },
+        "verify_certificate": {
+          "type": "boolean",
+          "example": true
+        },
+        "client_cert_ref": {
+          "type": "string",
+          "example": "mtls-client-cert"
+        }
+      }
+    },
+    "health_check": {
+      "type": "object",
+      "description": "Active health check configuration.",
+      "properties": {
+        "path": {
+          "type": "string",
+          "example": "/healthz"
+        },
+        "interval_seconds": {
+          "type": "int32",
+          "example": 5
+        },
+        "unhealthy_threshold": {
+          "type": "int32",
+          "example": 3
+        },
+        "healthy_threshold": {
+          "type": "int32",
+          "example": 2
+        }
+      }
+    },
+    "circuit_breaker": {
+      "type": "object",
+      "description": "Connection and request limits enforced by the proxy.",
+      "properties": {
+        "max_connections": {
+          "type": "int32",
+          "example": 1024
+        },
+        "max_pending_requests": {
+          "type": "int32",
+          "example": 1024
+        },
+        "max_requests": {
+          "type": "int32",
+          "example": 4096
+        },
+        "max_retries": {
+          "type": "int32",
+          "example": 3
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "endpoints"
+  ]
+}

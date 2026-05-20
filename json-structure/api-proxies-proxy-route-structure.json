@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/api-proxies/refs/heads/main/json-structure/api-proxies-proxy-route-structure.json",
+  "name": "ProxyRoute",
+  "description": "A routing rule on an API reverse proxy or edge proxy that matches incoming HTTP requests and forwards them to a named upstream cluster.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name of the proxy route.",
+      "example": "payments-v1-route"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of what this route does.",
+      "example": "Routes /v1/payments/* traffic from the public edge to the payments service cluster."
+    },
+    "host": {
+      "type": "string",
+      "description": "HTTP Host header value (or virtual host) this route matches.",
+      "example": "api.example.com"
+    },
+    "path_prefix": {
+      "type": "string",
+      "description": "Path prefix the proxy matches against the incoming request URI.",
+      "example": "/v1/payments"
+    },
+    "methods": {
+      "type": "array",
+      "description": "HTTP methods this route accepts.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE",
+          "HEAD",
+          "OPTIONS"
+        ]
+      },
+      "example": [
+        "GET",
+        "POST"
+      ]
+    },
+    "upstream_cluster": {
+      "type": "string",
+      "description": "Name of the upstream cluster traffic is forwarded to.",
+      "example": "payments-service"
+    },
+    "rewrite_prefix": {
+      "type": "string",
+      "description": "Path prefix to rewrite the matched path to when forwarding upstream.",
+      "example": "/payments"
+    },
+    "tls": {
+      "type": "object",
+      "description": "TLS settings applied to this route.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "example": true
+        },
+        "min_version": {
+          "type": "string",
+          "enum": [
+            "TLS1.2",
+            "TLS1.3"
+          ],
+          "example": "TLS1.2"
+        }
+      }
+    },
+    "filters": {
+      "type": "array",
+      "description": "Ordered list of proxy filters (rate-limit, auth, WAF, header mutation) applied to this route.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "jwt-auth",
+        "rate-limit-100rps",
+        "cors"
+      ]
+    },
+    "timeout_ms": {
+      "type": "int32",
+      "description": "Upstream request timeout in milliseconds.",
+      "example": 5000
+    },
+    "retry_policy": {
+      "type": "object",
+      "description": "Retry policy applied when upstream requests fail.",
+      "properties": {
+        "attempts": {
+          "type": "int32",
+          "example": 3
+        },
+        "retry_on": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "5xx",
+            "connect-failure",
+            "reset"
+          ]
+        }
+      }
+    },
+    "proxy_type": {
+      "type": "string",
+      "description": "Type of proxy this route is intended for.",
+      "enum": [
+        "reverse-proxy",
+        "edge-proxy",
+        "sidecar",
+        "ingress",
+        "caching-proxy"
+      ],
+      "example": "edge-proxy"
+    }
+  },
+  "required": [
+    "name",
+    "upstream_cluster"
+  ]
+}

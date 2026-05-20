@@ -1,0 +1,20 @@
+{
+  "name": "payments-v1-route",
+  "description": "Routes /v1/payments/* traffic from the public edge to the payments service cluster.",
+  "host": "api.example.com",
+  "path_prefix": "/v1/payments",
+  "methods": ["GET", "POST"],
+  "upstream_cluster": "payments-service",
+  "rewrite_prefix": "/payments",
+  "tls": {
+    "enabled": true,
+    "min_version": "TLS1.2"
+  },
+  "filters": ["jwt-auth", "rate-limit-100rps", "cors"],
+  "timeout_ms": 5000,
+  "retry_policy": {
+    "attempts": 3,
+    "retry_on": ["5xx", "connect-failure", "reset"]
+  },
+  "proxy_type": "edge-proxy"
+}

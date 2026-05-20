@@ -1,0 +1,144 @@
+aid: api-proxies
+name: API Proxies
+description: >-
+  An index and topic collection covering reverse-proxy and edge-proxy software used in front of APIs, including HTTP reverse proxies, edge proxies, load balancers, caching proxies, and service mesh sidecars. API proxies sit between API consumers and upstream services to provide TLS termination, routing, rate limiting, observability, traffic shaping, caching, authentication enforcement, and resilience features such as retries and circuit breaking. This collection includes general-purpose reverse proxies like NGINX, HAProxy, Caddy, Apache HTTP Server, Traefik, and Varnish, edge and service mesh proxies like Envoy, Linkerd2-proxy, Istio, Consul Connect, and AWS App Mesh, and proxy-oriented gateways like KrakenD, Tyk, Ambassador, Emissary, and Apache APISIX that overlap with the API gateway category but operate primarily as L7 proxies.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+- Reverse Proxy
+- Edge Proxy
+- API Proxy
+- Service Mesh Sidecar
+- Load Balancer
+- HTTP Proxy
+- Ingress
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/api-proxies/refs/heads/main/apis.yml
+created: '2026-05-19'
+modified: '2026-05-19'
+specificationVersion: '0.19'
+apis: []
+network:
+- name: Akamai
+  url: https://raw.githubusercontent.com/api-evangelist/akamai/refs/heads/main/apis.yml
+- name: Ambassador
+  url: https://raw.githubusercontent.com/api-evangelist/ambassador/refs/heads/main/apis.yml
+- name: Apache APISIX
+  url: https://raw.githubusercontent.com/api-evangelist/apache-apisix/refs/heads/main/apis.yml
+- name: Apache HTTP Server
+  url: https://raw.githubusercontent.com/api-evangelist/apache-httpd/refs/heads/main/apis.yml
+- name: Apache Tomcat
+  url: https://raw.githubusercontent.com/api-evangelist/apache-tomcat/refs/heads/main/apis.yml
+- name: AWS App Mesh
+  url: https://raw.githubusercontent.com/api-evangelist/aws-app-mesh/refs/heads/main/apis.yml
+- name: Azure Application Gateway
+  url: https://raw.githubusercontent.com/api-evangelist/microsoft-azure-application-gateway/refs/heads/main/apis.yml
+- name: Caddy
+  url: https://raw.githubusercontent.com/api-evangelist/caddy/refs/heads/main/apis.yml
+- name: Cloudflare
+  url: https://raw.githubusercontent.com/api-evangelist/cloudflare/refs/heads/main/apis.yml
+- name: Consul Connect
+  url: https://raw.githubusercontent.com/api-evangelist/consul-connect/refs/heads/main/apis.yml
+- name: Emissary-Ingress
+  url: https://raw.githubusercontent.com/api-evangelist/emissary-ingress/refs/heads/main/apis.yml
+- name: Envoy
+  url: https://raw.githubusercontent.com/api-evangelist/envoy/refs/heads/main/apis.yml
+- name: Envoy Gateway
+  url: https://raw.githubusercontent.com/api-evangelist/envoy-gateway/refs/heads/main/apis.yml
+- name: Envoy Proxy
+  url: https://raw.githubusercontent.com/api-evangelist/envoy-proxy/refs/heads/main/apis.yml
+- name: F5 Networks
+  url: https://raw.githubusercontent.com/api-evangelist/f5-networks/refs/heads/main/apis.yml
+- name: Fastly
+  url: https://raw.githubusercontent.com/api-evangelist/fastly/refs/heads/main/apis.yml
+- name: frp
+  url: https://raw.githubusercontent.com/api-evangelist/frp/refs/heads/main/apis.yml
+- name: HAProxy
+  url: https://raw.githubusercontent.com/api-evangelist/haproxy/refs/heads/main/apis.yml
+- name: Istio
+  url: https://raw.githubusercontent.com/api-evangelist/istio/refs/heads/main/apis.yml
+- name: Kong
+  url: https://raw.githubusercontent.com/api-evangelist/kong/refs/heads/main/apis.yml
+- name: KrakenD
+  url: https://raw.githubusercontent.com/api-evangelist/krakend/refs/heads/main/apis.yml
+- name: Linkerd
+  url: https://raw.githubusercontent.com/api-evangelist/linkerd/refs/heads/main/apis.yml
+- name: NGINX
+  url: https://raw.githubusercontent.com/api-evangelist/nginx/refs/heads/main/apis.yml
+- name: NGINX Service Mesh
+  url: https://raw.githubusercontent.com/api-evangelist/nginx-service-mesh/refs/heads/main/apis.yml
+- name: Sozu
+  url: https://raw.githubusercontent.com/api-evangelist/sozu/refs/heads/main/apis.yml
+- name: Squid
+  url: https://raw.githubusercontent.com/api-evangelist/squid/refs/heads/main/apis.yml
+- name: Traefik Labs
+  url: https://raw.githubusercontent.com/api-evangelist/traefik/refs/heads/main/apis.yml
+- name: Tyk
+  url: https://raw.githubusercontent.com/api-evangelist/tyk/refs/heads/main/apis.yml
+- name: Varnish Cache
+  url: https://raw.githubusercontent.com/api-evangelist/varnish/refs/heads/main/apis.yml
+- name: Apache Software Foundation
+  url: https://raw.githubusercontent.com/api-evangelist/apache/refs/heads/main/apis.yml
+- name: Akamai API Security
+  url: https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/apis.yml
+common:
+- type: Portal
+  url: https://apievangelist.com
+- type: GitHubOrganization
+  url: https://github.com/api-evangelist
+- type: Features
+  data:
+  - name: Layer 7 Reverse Proxying
+    description: API proxies terminate HTTP/HTTPS connections from clients and forward requests to upstream API services, hiding internal topology and providing a single front door.
+  - name: TLS Termination and mTLS
+    description: Proxies like NGINX, HAProxy, Envoy, and Linkerd2-proxy terminate TLS at the edge and can enforce mutual TLS between services in a mesh.
+  - name: Routing and Traffic Splitting
+    description: Edge proxies route requests by host, path, header, or method, and support traffic splitting, canary releases, and blue-green deployments.
+  - name: Rate Limiting and Throttling
+    description: Reverse proxies enforce rate limits, quotas, and concurrency limits at the edge to protect upstream APIs from abuse and overload.
+  - name: Caching and HTTP Acceleration
+    description: Caching proxies like Varnish, NGINX, Squid, and Cloudflare cache API responses to reduce upstream load and improve client latency.
+  - name: Observability and Access Logging
+    description: Proxies emit structured access logs, metrics, and traces (OpenTelemetry, Prometheus, statsd) for every request crossing the edge or mesh.
+  - name: Service Mesh Sidecar Pattern
+    description: Sidecar proxies like Envoy, Linkerd2-proxy, and Consul Connect run alongside each service to provide identity, encryption, retries, and traffic policy without changing application code.
+  - name: WAF and Edge Security
+    description: Edge proxies and CDNs like Cloudflare, Akamai, and Azure Application Gateway provide WAF rules, bot mitigation, and DDoS protection in front of APIs.
+- type: UseCases
+  data:
+  - name: API Edge Termination
+    description: Front internal APIs with NGINX, HAProxy, or Envoy to handle TLS, HTTP/2, HTTP/3, compression, and request normalization before requests reach application servers.
+  - name: Multi-Cluster Ingress
+    description: Use Envoy Gateway, Emissary, Ambassador, or Traefik as Kubernetes ingress controllers to expose APIs running across multiple clusters and namespaces.
+  - name: Service Mesh East-West Traffic
+    description: Deploy Istio, Linkerd, or Consul Connect to manage service-to-service API calls with mTLS, retries, and traffic policy inside a Kubernetes cluster.
+  - name: Global API Acceleration
+    description: Front public APIs with Cloudflare, Fastly, or Akamai to terminate connections at the edge, cache safe responses, and absorb DDoS traffic.
+  - name: Canary and Progressive Delivery
+    description: Use proxy-based traffic splitting in Envoy, Istio, or Linkerd to shift a percentage of API traffic to a new version and roll back on error budget breach.
+  - name: Legacy API Modernization
+    description: Place HAProxy, NGINX, or Apache HTTP Server in front of legacy SOAP or HTTP services to add TLS, modern auth, rate limiting, and observability without rewriting the backend.
+  - name: API Migration and Strangler Pattern
+    description: Use a reverse proxy to gradually route traffic from a legacy monolith API to new microservice APIs based on path or header rules.
+- type: Integrations
+  data:
+  - name: Envoy
+    description: CNCF L7 proxy used as the data plane for Istio, Consul Connect, Envoy Gateway, Ambassador, and Emissary, with an xDS configuration API.
+  - name: NGINX
+    description: Widely deployed open-source web server and reverse proxy with HTTP/2, HTTP/3, load balancing, caching, and Lua-based extension via OpenResty.
+  - name: HAProxy
+    description: High-performance TCP and HTTP reverse proxy and load balancer with a runtime Data Plane API for dynamic configuration.
+  - name: Traefik
+    description: Cloud-native reverse proxy and ingress controller with automatic service discovery for Kubernetes, Docker, and Consul.
+  - name: Caddy
+    description: HTTP/2 reverse proxy with automatic HTTPS via ACME, a JSON config API, and a plugin architecture.
+  - name: Istio
+    description: Service mesh that uses Envoy sidecars to provide mTLS, traffic management, and policy for Kubernetes APIs.
+  - name: Linkerd
+    description: Lightweight CNCF service mesh built around a purpose-built Rust micro-proxy (linkerd2-proxy) for east-west API traffic.
+  - name: Cloudflare
+    description: Global edge proxy and CDN providing TLS termination, WAF, bot management, and caching in front of APIs and websites.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+humanURL: https://apievangelist.com

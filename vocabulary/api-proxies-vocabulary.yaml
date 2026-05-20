@@ -1,0 +1,293 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: API Proxies
+  description: Vocabulary for the API proxies topic, covering reverse proxies, edge proxies, caching proxies, ingress controllers, and service mesh sidecars used in front of APIs.
+  created: '2026-05-19'
+  modified: '2026-05-19'
+
+operational:
+  apis:
+    - name: Envoy xDS Admin API
+      namespace: envoy
+      status: active
+    - name: NGINX Plus API
+      namespace: nginx
+      status: active
+    - name: HAProxy Data Plane API
+      namespace: haproxy
+      status: active
+    - name: Traefik API
+      namespace: traefik
+      status: active
+    - name: Caddy Config API
+      namespace: caddy
+      status: active
+    - name: Istio Pilot xDS
+      namespace: istio
+      status: active
+    - name: Linkerd Admin API
+      namespace: linkerd
+      status: active
+    - name: Cloudflare API
+      namespace: cloudflare
+      status: active
+
+  resources:
+    - name: routes
+      description: HTTP routing rules that match requests and forward them to upstream clusters
+      actions:
+        - list
+        - get
+        - create
+        - update
+        - delete
+    - name: clusters
+      description: Upstream service pools the proxy load-balances traffic to
+      actions:
+        - list
+        - get
+        - create
+        - update
+        - delete
+    - name: listeners
+      description: Network listeners (ports and protocols) the proxy accepts connections on
+      actions:
+        - list
+        - get
+        - create
+        - update
+        - delete
+    - name: filters
+      description: Request and response filters (auth, rate limit, WAF, header mutation) applied to routes
+      actions:
+        - list
+        - get
+        - create
+        - update
+        - delete
+    - name: certificates
+      description: TLS certificates and keys used for termination and mTLS
+      actions:
+        - list
+        - get
+        - create
+        - rotate
+        - delete
+    - name: endpoints
+      description: Individual upstream backend instances in a cluster
+      actions:
+        - list
+        - get
+        - drain
+
+  actions:
+    - name: list
+      description: Enumerate resources
+      httpMethod: GET
+      pattern: read
+    - name: get
+      description: Retrieve a single resource
+      httpMethod: GET
+      pattern: read
+    - name: create
+      description: Create a new resource
+      httpMethod: POST
+      pattern: write
+    - name: update
+      description: Update an existing resource
+      httpMethod: PUT
+      pattern: write
+    - name: delete
+      description: Remove a resource
+      httpMethod: DELETE
+      pattern: destructive
+    - name: rotate
+      description: Rotate a TLS certificate or key
+      httpMethod: POST
+      pattern: write
+    - name: drain
+      description: Stop sending new traffic to an endpoint and let in-flight requests finish
+      httpMethod: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: ProxyRoute
+        description: A routing rule on a reverse or edge proxy that maps requests to an upstream cluster
+        properties:
+          - name
+          - host
+          - path_prefix
+          - methods
+          - upstream_cluster
+          - filters
+          - tls
+          - timeout_ms
+          - retry_policy
+          - proxy_type
+      - name: UpstreamCluster
+        description: A pool of upstream endpoints the proxy load-balances traffic to
+        properties:
+          - name
+          - discovery_type
+          - load_balancing_policy
+          - endpoints
+          - protocol
+          - tls
+          - health_check
+          - circuit_breaker
+
+  enums:
+    proxy_types:
+      - reverse-proxy
+      - edge-proxy
+      - sidecar
+      - ingress
+      - caching-proxy
+    load_balancing_policies:
+      - round_robin
+      - least_request
+      - ring_hash
+      - random
+      - maglev
+    upstream_protocols:
+      - http1
+      - http2
+      - http3
+      - grpc
+      - tcp
+    discovery_types:
+      - static
+      - strict_dns
+      - logical_dns
+      - eds
+      - kubernetes
+      - consul
+    tls_versions:
+      - TLS1.2
+      - TLS1.3
+
+capability:
+  workflows:
+    - name: Edge TLS Termination and Routing
+      description: Terminate public TLS at the proxy and route requests by host and path to internal API services
+      apis:
+        - nginx
+        - haproxy
+        - envoy
+        - traefik
+        - caddy
+      personas:
+        - Platform Engineer
+      domains:
+        - Edge Proxy
+    - name: Service Mesh mTLS
+      description: Encrypt and authenticate east-west API traffic between services using sidecar proxies and workload identity
+      apis:
+        - istio
+        - linkerd
+        - consul-connect
+      personas:
+        - Platform Engineer
+        - Security Engineer
+      domains:
+        - Service Mesh
+    - name: Canary Traffic Splitting
+      description: Shift a percentage of API traffic from a stable version to a canary version and roll back automatically on error
+      apis:
+        - envoy
+        - istio
+        - linkerd
+        - traefik
+      personas:
+        - Release Engineer
+      domains:
+        - Traffic Management
+    - name: API Edge Acceleration
+      description: Cache safe API responses at a global edge and absorb DDoS traffic in front of origin services
+      apis:
+        - cloudflare
+        - fastly
+        - akamai
+        - varnish
+      personas:
+        - Platform Engineer
+      domains:
+        - Edge Proxy
+    - name: Ingress Controller Configuration
+      description: Declaratively configure Kubernetes ingress routes, TLS, and rate limits via a proxy-based ingress controller
+      apis:
+        - envoy-gateway
+        - emissary-ingress
+        - ambassador
+        - traefik
+      personas:
+        - Platform Engineer
+      domains:
+        - Ingress
+
+  personas:
+    - id: platform-engineer
+      name: Platform Engineer
+      description: Engineers operating proxies, ingress controllers, and service meshes for API platforms
+      workflows:
+        - Edge TLS Termination and Routing
+        - Service Mesh mTLS
+        - API Edge Acceleration
+        - Ingress Controller Configuration
+    - id: security-engineer
+      name: Security Engineer
+      description: Engineers enforcing TLS, mTLS, WAF, and zero-trust policy at the proxy layer
+      workflows:
+        - Service Mesh mTLS
+    - id: release-engineer
+      name: Release Engineer
+      description: Engineers running canary, blue/green, and progressive delivery rollouts via proxy traffic splitting
+      workflows:
+        - Canary Traffic Splitting
+
+  domains:
+    - name: Edge Proxy
+      description: Proxies and CDNs that sit at the public edge to terminate TLS, cache, and route API traffic
+    - name: Service Mesh
+      description: Sidecar proxies that secure and observe east-west API traffic between services
+    - name: Ingress
+      description: Cluster-edge proxies that expose APIs running inside Kubernetes or similar platforms
+    - name: Traffic Management
+      description: Proxy-driven routing, splitting, retrying, and shaping of API traffic
+
+crossReference:
+  - resource: routes
+    operations:
+      - list
+      - create
+      - update
+    workflows:
+      - Edge TLS Termination and Routing
+      - Canary Traffic Splitting
+      - Ingress Controller Configuration
+    personas:
+      - Platform Engineer
+      - Release Engineer
+  - resource: clusters
+    operations:
+      - list
+      - create
+      - update
+    workflows:
+      - Edge TLS Termination and Routing
+      - Service Mesh mTLS
+    personas:
+      - Platform Engineer
+  - resource: certificates
+    operations:
+      - list
+      - create
+      - rotate
+    workflows:
+      - Edge TLS Termination and Routing
+      - Service Mesh mTLS
+    personas:
+      - Security Engineer
+      - Platform Engineer

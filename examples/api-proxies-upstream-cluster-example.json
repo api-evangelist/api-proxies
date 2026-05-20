@@ -1,0 +1,30 @@
+{
+  "name": "payments-service",
+  "description": "Internal payments microservice running in the payments Kubernetes namespace.",
+  "discovery_type": "kubernetes",
+  "load_balancing_policy": "least_request",
+  "endpoints": [
+    { "host": "10.0.4.12", "port": 8080, "weight": 100 },
+    { "host": "10.0.4.13", "port": 8080, "weight": 100 },
+    { "host": "10.0.4.14", "port": 8080, "weight": 50 }
+  ],
+  "protocol": "http2",
+  "tls": {
+    "enabled": true,
+    "sni": "payments.internal.example.com",
+    "verify_certificate": true,
+    "client_cert_ref": "mtls-client-cert"
+  },
+  "health_check": {
+    "path": "/healthz",
+    "interval_seconds": 5,
+    "unhealthy_threshold": 3,
+    "healthy_threshold": 2
+  },
+  "circuit_breaker": {
+    "max_connections": 1024,
+    "max_pending_requests": 1024,
+    "max_requests": 4096,
+    "max_retries": 3
+  }
+}
