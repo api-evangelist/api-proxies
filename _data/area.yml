@@ -1,0 +1,194 @@
+meta:
+  name: API Proxies
+  description: An index and topic collection covering reverse-proxy and edge-proxy
+    software used in front of APIs, including HTTP reverse proxies, edge proxies,
+    load balancers, caching proxies, and service mesh sidecars. API proxies sit between
+    API consumers and upstream services to provide TLS termination, routing, rate
+    limiting, observability, traffic shaping, caching, authentication enforcement,
+    and resilience features such as retries and circuit breaking. This collection
+    includes general-purpose reverse proxies like NGINX, HAProxy, Caddy, Apache HTTP
+    Server, Traefik, and Varnish, edge and service mesh proxies like Envoy, Linkerd2-proxy,
+    Istio, Consul Connect, and AWS App Mesh, and proxy-oriented gateways like KrakenD,
+    Tyk, Ambassador, Emissary, and Apache APISIX that overlap with the API gateway
+    category but operate primarily as L7 proxies.
+  tags:
+  - Reverse Proxy
+  - Edge Proxy
+  - API Proxy
+  - Service Mesh Sidecar
+  - Load Balancer
+  - HTTP Proxy
+  - Ingress
+  portal: https://apievangelist.com
+  github: https://github.com/api-evangelist
+  repo: api-proxies
+services_tools:
+- name: Akamai
+  repo: https://github.com/api-evangelist/akamai
+  apisio: https://providers.apis.io/providers/akamai/
+- name: Ambassador
+  repo: https://github.com/api-evangelist/ambassador
+  apisio: https://providers.apis.io/providers/ambassador/
+- name: Apache APISIX
+  repo: https://github.com/api-evangelist/apache-apisix
+  apisio: https://providers.apis.io/providers/apache-apisix/
+- name: Apache HTTP Server
+  repo: https://github.com/api-evangelist/apache-httpd
+  apisio: https://providers.apis.io/providers/apache-httpd/
+- name: Apache Tomcat
+  repo: https://github.com/api-evangelist/apache-tomcat
+  apisio: https://providers.apis.io/providers/apache-tomcat/
+- name: AWS App Mesh
+  repo: https://github.com/api-evangelist/aws-app-mesh
+  apisio: https://providers.apis.io/providers/aws-app-mesh/
+- name: Azure Application Gateway
+  repo: https://github.com/api-evangelist/microsoft-azure-application-gateway
+  apisio: https://providers.apis.io/providers/microsoft-azure-application-gateway/
+- name: Caddy
+  repo: https://github.com/api-evangelist/caddy
+  apisio: https://providers.apis.io/providers/caddy/
+- name: Cloudflare
+  repo: https://github.com/api-evangelist/cloudflare
+  apisio: https://providers.apis.io/providers/cloudflare/
+- name: Consul Connect
+  repo: https://github.com/api-evangelist/consul-connect
+  apisio: https://providers.apis.io/providers/consul-connect/
+- name: Emissary-Ingress
+  repo: https://github.com/api-evangelist/emissary-ingress
+  apisio: https://providers.apis.io/providers/emissary-ingress/
+- name: Envoy
+  repo: https://github.com/api-evangelist/envoy
+  apisio: https://providers.apis.io/providers/envoy/
+- name: Envoy Gateway
+  repo: https://github.com/api-evangelist/envoy-gateway
+  apisio: https://providers.apis.io/providers/envoy-gateway/
+- name: Envoy Proxy
+  repo: https://github.com/api-evangelist/envoy-proxy
+  apisio: https://providers.apis.io/providers/envoy-proxy/
+- name: F5 Networks
+  repo: https://github.com/api-evangelist/f5-networks
+  apisio: https://providers.apis.io/providers/f5-networks/
+- name: Fastly
+  repo: https://github.com/api-evangelist/fastly
+  apisio: https://providers.apis.io/providers/fastly/
+- name: frp
+  repo: https://github.com/api-evangelist/frp
+  apisio: https://providers.apis.io/providers/frp/
+- name: HAProxy
+  repo: https://github.com/api-evangelist/haproxy
+  apisio: https://providers.apis.io/providers/haproxy/
+- name: Istio
+  repo: https://github.com/api-evangelist/istio
+  apisio: https://providers.apis.io/providers/istio/
+- name: Kong
+  repo: https://github.com/api-evangelist/kong
+  apisio: https://providers.apis.io/providers/kong/
+- name: KrakenD
+  repo: https://github.com/api-evangelist/krakend
+  apisio: https://providers.apis.io/providers/krakend/
+- name: Linkerd
+  repo: https://github.com/api-evangelist/linkerd
+  apisio: https://providers.apis.io/providers/linkerd/
+- name: NGINX
+  repo: https://github.com/api-evangelist/nginx
+  apisio: https://providers.apis.io/providers/nginx/
+- name: NGINX Service Mesh
+  repo: https://github.com/api-evangelist/nginx-service-mesh
+  apisio: https://providers.apis.io/providers/nginx-service-mesh/
+- name: Sozu
+  repo: https://github.com/api-evangelist/sozu
+  apisio: https://providers.apis.io/providers/sozu/
+- name: Squid
+  repo: https://github.com/api-evangelist/squid
+  apisio: https://providers.apis.io/providers/squid/
+- name: Traefik Labs
+  repo: https://github.com/api-evangelist/traefik
+  apisio: https://providers.apis.io/providers/traefik/
+- name: Tyk
+  repo: https://github.com/api-evangelist/tyk
+  apisio: https://providers.apis.io/providers/tyk/
+- name: Varnish Cache
+  repo: https://github.com/api-evangelist/varnish
+  apisio: https://providers.apis.io/providers/varnish/
+- name: Apache Software Foundation
+  repo: https://github.com/api-evangelist/apache
+  apisio: https://providers.apis.io/providers/apache/
+- name: Akamai API Security
+  repo: https://github.com/api-evangelist/akamai-api-security
+  apisio: https://providers.apis.io/providers/akamai-api-security/
+features:
+- name: Layer 7 Reverse Proxying
+  description: API proxies terminate HTTP/HTTPS connections from clients and forward
+    requests to upstream API services, hiding internal topology and providing a single
+    front door.
+- name: TLS Termination and mTLS
+  description: Proxies like NGINX, HAProxy, Envoy, and Linkerd2-proxy terminate TLS
+    at the edge and can enforce mutual TLS between services in a mesh.
+- name: Routing and Traffic Splitting
+  description: Edge proxies route requests by host, path, header, or method, and support
+    traffic splitting, canary releases, and blue-green deployments.
+- name: Rate Limiting and Throttling
+  description: Reverse proxies enforce rate limits, quotas, and concurrency limits
+    at the edge to protect upstream APIs from abuse and overload.
+- name: Caching and HTTP Acceleration
+  description: Caching proxies like Varnish, NGINX, Squid, and Cloudflare cache API
+    responses to reduce upstream load and improve client latency.
+- name: Observability and Access Logging
+  description: Proxies emit structured access logs, metrics, and traces (OpenTelemetry,
+    Prometheus, statsd) for every request crossing the edge or mesh.
+- name: Service Mesh Sidecar Pattern
+  description: Sidecar proxies like Envoy, Linkerd2-proxy, and Consul Connect run
+    alongside each service to provide identity, encryption, retries, and traffic policy
+    without changing application code.
+- name: WAF and Edge Security
+  description: Edge proxies and CDNs like Cloudflare, Akamai, and Azure Application
+    Gateway provide WAF rules, bot mitigation, and DDoS protection in front of APIs.
+use_cases:
+- name: API Edge Termination
+  description: Front internal APIs with NGINX, HAProxy, or Envoy to handle TLS, HTTP/2,
+    HTTP/3, compression, and request normalization before requests reach application
+    servers.
+- name: Multi-Cluster Ingress
+  description: Use Envoy Gateway, Emissary, Ambassador, or Traefik as Kubernetes ingress
+    controllers to expose APIs running across multiple clusters and namespaces.
+- name: Service Mesh East-West Traffic
+  description: Deploy Istio, Linkerd, or Consul Connect to manage service-to-service
+    API calls with mTLS, retries, and traffic policy inside a Kubernetes cluster.
+- name: Global API Acceleration
+  description: Front public APIs with Cloudflare, Fastly, or Akamai to terminate connections
+    at the edge, cache safe responses, and absorb DDoS traffic.
+- name: Canary and Progressive Delivery
+  description: Use proxy-based traffic splitting in Envoy, Istio, or Linkerd to shift
+    a percentage of API traffic to a new version and roll back on error budget breach.
+- name: Legacy API Modernization
+  description: Place HAProxy, NGINX, or Apache HTTP Server in front of legacy SOAP
+    or HTTP services to add TLS, modern auth, rate limiting, and observability without
+    rewriting the backend.
+- name: API Migration and Strangler Pattern
+  description: Use a reverse proxy to gradually route traffic from a legacy monolith
+    API to new microservice APIs based on path or header rules.
+integrations:
+- name: Envoy
+  description: CNCF L7 proxy used as the data plane for Istio, Consul Connect, Envoy
+    Gateway, Ambassador, and Emissary, with an xDS configuration API.
+- name: NGINX
+  description: Widely deployed open-source web server and reverse proxy with HTTP/2,
+    HTTP/3, load balancing, caching, and Lua-based extension via OpenResty.
+- name: HAProxy
+  description: High-performance TCP and HTTP reverse proxy and load balancer with
+    a runtime Data Plane API for dynamic configuration.
+- name: Traefik
+  description: Cloud-native reverse proxy and ingress controller with automatic service
+    discovery for Kubernetes, Docker, and Consul.
+- name: Caddy
+  description: HTTP/2 reverse proxy with automatic HTTPS via ACME, a JSON config API,
+    and a plugin architecture.
+- name: Istio
+  description: Service mesh that uses Envoy sidecars to provide mTLS, traffic management,
+    and policy for Kubernetes APIs.
+- name: Linkerd
+  description: Lightweight CNCF service mesh built around a purpose-built Rust micro-proxy
+    (linkerd2-proxy) for east-west API traffic.
+- name: Cloudflare
+  description: Global edge proxy and CDN providing TLS termination, WAF, bot management,
+    and caching in front of APIs and websites.
