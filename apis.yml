@@ -3,7 +3,7 @@ name: API Proxies
 description: >-
   An index and topic collection covering reverse-proxy and edge-proxy software used in front of APIs, including HTTP reverse proxies, edge proxies, load balancers, caching proxies, and service mesh sidecars. API proxies sit between API consumers and upstream services to provide TLS termination, routing, rate limiting, observability, traffic shaping, caching, authentication enforcement, and resilience features such as retries and circuit breaking. This collection includes general-purpose reverse proxies like NGINX, HAProxy, Caddy, Apache HTTP Server, Traefik, and Varnish, edge and service mesh proxies like Envoy, Linkerd2-proxy, Istio, Consul Connect, and AWS App Mesh, and proxy-oriented gateways like KrakenD, Tyk, Ambassador, Emissary, and Apache APISIX that overlap with the API gateway category but operate primarily as L7 proxies.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Reverse Proxy
 - Edge Proxy
