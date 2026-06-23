@@ -1,7 +1,7 @@
 ---
-title: 'The Troubleshooter: Using Render''s MCP service to Make Life Easier'
-link: https://langflow.org/blog/the-troubleshooter-using-mcp-in-render
-published: '2025-08-14'
+title: 'Langflow 1.7 released: new Agent components, MCP Streamable HTTP, and more!'
+link: https://langflow.org/blog/langflow-1-7
+published: '2025-12-22'
 provider: langflow
 repo: https://github.com/api-evangelist/langflow
 domain: langflow.org
