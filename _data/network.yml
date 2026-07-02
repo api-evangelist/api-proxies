@@ -1,0 +1,31 @@
+related:
+- name: Service Mesh
+  url: https://service-mesh.apievangelist.com
+  icon: https://service-mesh.apievangelist.com/icon.png
+  description: Service mesh is a dedicated infrastructure layer for handling service-to-service communication
+    in microservices architectures. It provides traffic management, mutual TLS security,…
+- name: Serverless
+  url: https://serverless.apievangelist.com
+  icon: https://serverless.apievangelist.com/icon.png
+  description: An index and topic collection covering serverless compute, function-as-a-service (FaaS)
+    runtimes, and edge function platforms. Serverless platforms abstract away server…
+- name: Proxy
+  url: https://proxy.apievangelist.com
+  icon: https://proxy.apievangelist.com/icon.png
+  description: This is the index of API proxy, reverse proxy, forward proxy, and proxy middleware service
+    and tooling repos being tracked by the API Evangelist network.
+- name: Scraping
+  url: https://scraping.apievangelist.com
+  icon: https://scraping.apievangelist.com/icon.png
+  description: An index and topic collection covering web scraping platforms, proxy networks, SERP APIs,
+    browser-based extraction services, and data collection APIs. Scraping platforms turn the…
+- name: Testing
+  url: https://testing.apievangelist.com
+  icon: https://testing.apievangelist.com/icon.png
+  description: A curated index of services, tooling, and open source solutions for API testing, mocking,
+    load testing, contract testing, and quality assurance. This collection covers functional…
+- name: Clients
+  url: https://clients.apievangelist.com
+  icon: https://clients.apievangelist.com/icon.png
+  description: This is the index of API client, HTTP client, and API consumer tools repos being tracked
+    by the API Evangelist network. The collection includes command-line HTTP clients, GUI…
