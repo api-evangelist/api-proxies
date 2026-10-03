@@ -1,7 +1,7 @@
 ---
-title: 'Model Context Protocol Proxies: Enabling Enterprise Control with Virtual MCPs'
-link: https://glama.ai/blog/2025-12-09-model-context-protocol-proxies-enabling-enterprise-control-with-virtual-mcps
-published: '2025-12-09'
+title: How to Test MCP Streamable HTTP Endpoints Using cURL
+link: https://glama.ai/blog/2026-01-02-how-to-test-mcp-streamable-http-endpoints-using-c-url
+published: '2026-01-02'
 provider: glama-ai
 repo: https://github.com/api-evangelist/glama-ai
 domain: glama.ai
